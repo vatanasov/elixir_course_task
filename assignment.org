@@ -1,38 +1,38 @@
 * Coordinate
-** Create a struct named Coordinate, that has the following attributes:
-   - lat
-   - lon
+  - Create a struct named Coordinate, that has the following attributes:
+    - lat
+    - lon
 * Location
-** Create a struct named Location, which has the following attributes:
-   - coordinate
-   - name
-   - type (which can be one of the following: :landmark, :cafe, :restaurant, :shop)
-** Create a function Location.new/3, that takes a coordinate (of type Coordinate), name and a type (in that order) and returns either {:ok, <location>} (where <location> is a struct of type location with the provided arguments), or {:error, <reason>} (where <reason> is something indicating why the location cannot be created)
-** Create a function Location.distance/2, which takes two locations, and returns the distance between them, using the following formula: 
+  - Create a struct named Location, which has the following attributes:
+    - coordinate
+    - name
+    - type (which can be one of the following: :landmark, :cafe, :restaurant, :shop)
+  - Create a function Location.new/3, that takes a coordinate (of type Coordinate), name and a type (in that order) and returns either {:ok, <location>} (where <location> is a struct of type location with the provided arguments), or {:error, <reason>} (where <reason> is something indicating why the location cannot be created)
+  - Create a function Location.distance/2, which takes two locations, and returns the distance between them, using the following formula: 
       \begin{equation}
       d = \sqrt{(x2 -x1)^2 + (y2-y1)^2}
       \end{equation}
 
       (Technically not the correct formula on a globe, but we will 2D the whole task to focus on what matters in this course)
 * Route
-** Create a struct named Route, which has the following attributes:
-   - locations (list of structs of type Locations)
-   - name
-** Create a function Route.length/1, which takes a route and returns the length of the whole route
-** Create a function Route.best/2, which takes a two routes with the same starting and ending points, and return {:ok, <shorter-of-the-routes>}, when the two routes really have the same starting and ending points, or {:error, :not_matching} when one or more of the locations differ.
-** Create a function Route.print/1, which takes a route, and pretty prints all of the names in the route, separated by thin arrows (E.g. "Alba -> City hall -> BDZ -> Yuzhen polah")
+  - Create a struct named Route, which has the following attributes:
+    - locations (list of structs of type Locations)
+    - name
+  - Create a function Route.length/1, which takes a route and returns the length of the whole route
+  - Create a function Route.best/2, which takes a two routes with the same starting and ending points, and return {:ok, <shorter-of-the-routes>}, when the two routes really have the same starting and ending points, or {:error, :not_matching} when one or more of the locations differ.
+  - Create a function Route.print/1, which takes a route, and pretty prints all of the names in the route, separated by thin arrows (E.g. "Alba -> City hall -> BDZ -> Yuzhen polah")
 
 * Route
-** Create a GenServer Routes, which will have a list of routes as a state
+  - Create a GenServer Routes, which will have a list of routes as a state
 
    From here on all of the required functions are interface functions. You should create appropriate handles for each of them
 
-** Create a function Routes.add/1, which takes a struct of type Route and adds a route to the state
-** Create a function Routes.destroyed/1, which takes a name of location and removes all routes containing that location from the state
-** Create a function Routes.best/2, which takes two names of locations, and returns either {:ok, <best-route>}, if there is one, or {:error, :no_matching_route_found}, if there isn't a route for those locations. Bear in mind, that each of those locations can be both starting and ending points (E.g. if you pass "Alba" and "City hall", this should look for both "Alba" -> "City hall" and "City hall" -> "Alba" routes)
-** Create a function Routes.print_all/0, which pretty prints all of the routes, separated by newlines
-** The GenServer state should be backed up, so in case the server crashes, it should restore it's state
-
+  - Create a function Routes.add/1, which takes a struct of type Route and adds a route to the state
+  - Create a function Routes.destroyed/1, which takes a name of location and removes all routes containing that location from the state
+  - Create a function Routes.best/2, which takes two names of locations, and returns either {:ok, <best-route>}, if there is one, or {:error, :no_matching_route_found}, if there isn't a route for those locations. Bear in mind, that each of those locations can be both starting and ending points (E.g. if you pass "Alba" and "City hall", this should look for both "Alba" -> "City hall" and "City hall" -> "Alba" routes)
+  - Create a function Routes.print_all/0, which pretty prints all of the routes, separated by newlines
+  - The GenServer state should be backed up, so in case the server crashes, it should restore it's state
+  -
 * Superision
-** Every GenServer should be supervised
-** All of them should be started when the application starts
+  - Every GenServer should be supervised
+  - All of them should be started when the application starts
