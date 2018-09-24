@@ -9,9 +9,7 @@
     - type (which can be one of the following: :landmark, :cafe, :restaurant, :shop)
   - Create a function Location.new/3, that takes a coordinate (of type Coordinate), name and a type (in that order) and returns either {:ok, <location>} (where <location> is a struct of type location with the provided arguments), or {:error, <reason>} (where <reason> is something indicating why the location cannot be created)
   - Create a function Location.distance/2, which takes two locations, and returns the distance between them, using the following formula: 
-      \begin{equation}
-      d = \sqrt{(x2 -x1)^2 + (y2-y1)^2}
-      \end{equation}
+    [[./equasion.png]]
 
       (Technically not the correct formula on a globe, but we will 2D the whole task to focus on what matters in this course)
 * Route
