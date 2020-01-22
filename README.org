@@ -36,6 +36,7 @@
   - Create a function Routes.add/1, which takes a struct of type Route and adds a route to the state
   - Create a function Routes.destroyed/1, which takes a name of location and removes all routes containing that location from the state
   - Create a function Routes.best/2, which takes two names of locations, and returns either {:ok, <best-route>}, if there is one, or {:error, :no_matching_route_found}, if there isn't a route for those locations. Bear in mind, that each of those locations can be both starting and ending points (E.g. if you pass "Alba" and "City hall", this should look for both "Alba" -> "City hall" and "City hall" -> "Alba" routes)
+  **ADDITIONAL INFO Routes.best/2 is determened by calculating the distance between each of the Locations in the Route, and then combining them together to sum the whole distance of the Route. Whichever of the 2 Routes has less travel distance is considered the best.**
   - Create a function Routes.print_all/0, which pretty prints all of the routes, separated by newlines
   - The GenServer state should be backed up, so in case the server crashes, it should restore it's state
 
